@@ -10,3 +10,6 @@ This repository contains different files:
 ## Usage
 
 Insert the training set and the corresponding labels and indicate which columns should be considered as numerical in the file `main.m`: it outputs the classification of the test set made by the tree built.
+
+
+<img src="https://raw.githubusercontent.com/irenebenedetto/ID3-algorithm/master/imgs/output.png" height="150px">
