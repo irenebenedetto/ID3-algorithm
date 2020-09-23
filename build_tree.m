@@ -1,8 +1,8 @@
 function [branches, labels, thresholds, classification] = build_tree(level, ts, c, to_take, tree, lab, alpha, numerical, branches, labels,classification, thresholds, thresh)
 
 
-fprintf('\n\t LEVEL  ');
-fprintf('%d \n', level);
+% fprintf('\n\t LEVEL  ');
+% fprintf('%d \n', level);
 pc = [];
 
 % here I compute the the probability of the class that it is used later to
@@ -35,7 +35,7 @@ end
 
 
 HC = H(pc);
-fprintf('\nH(C):\t%.4f ', HC);
+% fprintf('\nH(C):\t%.4f ', HC);
 IGR = zeros(1, 3);
 
 if ~isempty(to_take)
@@ -51,7 +51,7 @@ if ~isempty(to_take)
 %   vector "to_take": for these variables I compute the IGR. If it is
 %   numerical it takes the treshold that makes the IGR maximal. 
     for i=1:length(to_take)
-        fprintf('\n\nVariable: %d', to_take(i));
+%         fprintf('\n\nVariable: %d', to_take(i));
         X = unique(ts(:, to_take(i)));
         HC_X = [];
         px = [];
@@ -96,8 +96,8 @@ if ~isempty(to_take)
                 
             end
             IGR(i) = max_igr;
-            fprintf('\nIGR:\t%.4f', max_igr);
-            fprintf('\nThreshold:\t%.4f', max_th);
+%             fprintf('\nIGR:\t%.4f', max_igr);
+%             fprintf('\nThreshold:\t%.4f', max_th);
             max_thershold = [max_thershold, max_th];
         else
             for k = 1:length(X)
@@ -118,13 +118,13 @@ if ~isempty(to_take)
             HX= H(px);
             IGR(i) = ICX/HX;
             
-            fprintf('\nH(C/X vect):\t');
-            fprintf('%.4f ', HC_X);
-            
-            fprintf('\nH(C/X):\t%.4f', HCX);
-            fprintf('\nH(X):\t%.4f', HX);
-            fprintf('\nI(C;X):\t%.4f', ICX);
-            fprintf('\nIGR:\t%.4f', IGR(i));
+%             fprintf('\nH(C/X vect):\t');
+%             fprintf('%.4f ', HC_X);
+%             
+%             fprintf('\nH(C/X):\t%.4f', HCX);
+%             fprintf('\nH(X):\t%.4f', HX);
+%             fprintf('\nI(C;X):\t%.4f', ICX);
+%             fprintf('\nIGR:\t%.4f', IGR(i));
         end
         
         %take the variable that generate the maximum IGR and classify if
@@ -132,7 +132,7 @@ if ~isempty(to_take)
         if i == length(to_take)
             [m, amax] = max(IGR);
             m = to_take(amax);
-            fprintf('\n\nMax IGR of variable:\t%d\n', m);
+%             fprintf('\n\nMax IGR of variable:\t%d\n', m);
             tree = [tree, to_take(amax)];
             
 %           when  the variable with maximum IGR is numerical I created I temporary matrix
@@ -198,18 +198,18 @@ if ~isempty(to_take)
                     labels = [labels; [nlab, padding_lab]];
                     thresholds = [thresholds; [thresh, padding_th]];
                     
-                    fprintf('\n\t%d CLASSIFIED AS %d\n', X(k), class(1));
-                    fprintf('classification with pattern:\t');
-                    fprintf('%d ', [tree, padding_tree]);
-                    
-                    fprintf('\n\n\n');
+%                     fprintf('\n\t%d CLASSIFIED AS %d\n', X(k), class(1));
+%                     fprintf('classification with pattern:\t');
+%                     fprintf('%d ', [tree, padding_tree]);
+%                     
+%                     fprintf('\n\n\n');
                 else
                   
                     lab = [lab, X(k)];
                     
                     
                     [branches, labels, thresholds, classification] = build_tree(level+1, new_ts, new_c, to_take, tree, lab, alpha, numerical, branches, labels,classification, thresholds, thresh);
-                    fprintf('\n\t\t--> BACKTRACK');
+%                     fprintf('\n\t\t--> BACKTRACK');
                     lab(length(lab)) = [];
                 end
             end

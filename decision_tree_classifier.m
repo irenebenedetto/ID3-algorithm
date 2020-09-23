@@ -1,11 +1,6 @@
 function decision =  decision_tree_classifier(v, train_set, class_label, numerical)
 
-fprintf('*** DECISION TREE CLASSIFIER ***\n\n');
-
-
-         
-disp(train_set);
-disp(class_label);
+fprintf('*** DECISION TREE CLASSIFIER ***\n');
 
 % alpha is a vector that contains the alphabeth of the class (0, 1)
 alpha = unique(class_label);
@@ -50,9 +45,9 @@ thresh = [];
 [branches, labels, thresholds, classification] = build_tree(level, train_set, class_label, to_take, tree, lab, alpha, numerical, branches, labels,classification, thresholds, thresh);
 
 tree = [];
-
-
-new = v;
-decision = classifier(new, numerical, branches, labels, thresholds, classification);
-fprintf('\nelement: [%d, %d, %d] \tclass: %d', new(1), new(2), new(3), decision);
-
+s = size(v);
+for i=1:s(1)
+    new = v(i,:);
+    decision = classifier(new, numerical, branches, labels, thresholds, classification);
+    fprintf('\nelement: [%d, %d, %d] \tclass: %d', new(1), new(2), new(3), decision);
+end

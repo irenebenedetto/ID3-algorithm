@@ -6,10 +6,7 @@ s = size(branches);
 % in the path so that means that the classification doesn't depends on this
 % variable and a point +1 is assigned as default 
 
-branches
-labels
 
-thresholds
 for i=1:s(1)
     point = 0;
     temp_new = new;
