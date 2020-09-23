@@ -9,5 +9,4 @@ This repository contains different files:
 
 ## Usage
 
-Insert the training set and the corresponding labels and indicate which columns should dbe considered as numerical: the file plots the trends of the Bit Error Rate over the Signal-To-Noise rate for the three windows chosen.
-
+Insert the training set and the corresponding labels and indicate which columns should be considered as numerical in the file `main.m`: it will output the classification of the test vector made by the tree built.
