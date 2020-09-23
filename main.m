@@ -11,7 +11,7 @@ train_set = [30, 0, 10;      %0
          
 class_label = [0;0;0;1;0;1;0;1];
 numerical = [1 3];
-
-decision = decision_tree_classifier([14 1 122], train_set, class_label, numerical);
+test_set = [14 1 122];
+decision = decision_tree_classifier(test_set, train_set, class_label, numerical);
 
 decision
